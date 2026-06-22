@@ -1,0 +1,18 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df = pd.read_csv("/content/stock_data.csv")
+print("Mean",np.mean(df["Stock_Price"]))
+print("Median",np.median(df["Stock_Price"]))
+print("Average",np.average(df["Stock_Price"]))
+plt.xlabel("Stock_price")
+plt.ylabel("Date")
+plt.title("ABC COMPANY PVT LTD")
+plt.plot(df["Stock_Price"],df["Date"])
+plt.show()
+plt.pie(df["Stock_Price"], labels=df["Date"])
+plt.title("stock price details")
+plt.show()
+plt.bar(df["Stock_Price"],df["Date"])
+plt.title("stock price analysis")
+plt.show()
