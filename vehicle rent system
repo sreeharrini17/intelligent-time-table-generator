@@ -1,0 +1,40 @@
+class Vehicle:
+    def __init__(self, vehicle_id, name, rent_per_day):
+        self.vehicle_id = vehicle_id
+        self.name = name
+        self.rent_per_day = rent_per_day
+        self.available = True
+vehicles = [Vehicle("V101", "Bike", 300), Vehicle("V102", "Car", 1000), Vehicle("V103", "Scooter", 200)]
+def display_vehicles():
+    print("\nAVAILABLE VEHICLES")
+    for v in vehicles:
+        if v.available:
+            print(v.vehicle_id, "-", v.name,
+                  "- ₹", v.rent_per_day, "/day")
+def rent_vehicle():
+    vehicle_id = input("Enter Vehicle ID: ")
+    days = int(input("Enter Number of Days: "))
+    for v in vehicles:
+        if v.vehicle_id == vehicle_id and v.available:
+            bill = v.rent_per_day * days
+            v.available = False
+            print("\nVehicle Rented Successfully")
+            print("Vehicle :", v.name)
+            print("Total Bill : ₹", bill)
+            return
+    print("Vehicle Not Available")
+while True:
+    print("\n===== VEHICLE RENTAL SYSTEM =====")
+    print("1. View Vehicles")
+    print("2. Rent Vehicle")
+    print("3. Exit")
+    choice = int(input("Enter Choice (1/2/3): "))
+    if choice == 1:
+        display_vehicles()
+    elif choice == 2:
+        rent_vehicle()
+    elif choice == 3:
+        print("Thank You")
+        break
+    else:
+        print("Invalid Choice")
